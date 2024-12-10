@@ -34,7 +34,7 @@ class Memory:
                     model=model,
                     openai_api_key=os.getenv("CUSTOM_API_KEY", "custom"),
                     openai_api_base=os.getenv(
-                        "CUSTOM_BASE_URL", "http://localhost:1234/v1"
+                        "CUSTOM_API_BASE", "http://localhost:1234/v1"
                     ),  # default for lmstudio
                     check_embedding_ctx_length=False,
                     **embdding_kwargs,
