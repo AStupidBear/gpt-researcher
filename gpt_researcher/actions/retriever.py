@@ -82,18 +82,18 @@ def get_retrievers(headers, cfg):
     Returns:
         list: A list of retriever classes to be used for searching.
     """
-    # Check headers first for multiple retrievers
-    if headers.get("retrievers"):
-        retrievers = headers.get("retrievers").split(",")
-    # If not found, check headers for a single retriever
-    elif headers.get("retriever"):
-        retrievers = [headers.get("retriever")]
-    # If not in headers, check config for multiple retrievers
-    elif cfg.retrievers:
+    # First check config for multiple retrievers
+    if cfg.retrievers:
         retrievers = cfg.retrievers
     # If not found, check config for a single retriever
     elif cfg.retriever:
         retrievers = [cfg.retriever]
+    # I f not in config, check headers for multiple retrievers
+    elif headers.get("retrievers"):
+        retrievers = headers.get("retrievers").split(",")
+    # If not found, check headers for a single retriever
+    elif headers.get("retriever"):
+        retrievers = [headers.get("retriever")]
     # If still not set, use default retriever
     else:
         retrievers = [get_default_retriever().__name__]
