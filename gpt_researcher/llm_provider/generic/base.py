@@ -17,7 +17,8 @@ _SUPPORTED_PROVIDERS = {
     "huggingface",
     "groq",
     "bedrock",
-    "dashscope"
+    "dashscope",
+    "openrouter"
 }
 
 
@@ -117,7 +118,7 @@ class GenericLLMProvider:
             from langchain_openai import ChatOpenAI
 
             llm = ChatOpenAI(
-                openai_api_base="https://api.openrouter.ai/v1", 
+                openai_api_base="https://openrouter.ai/api/v1", 
                 openai_api_key=os.environ["OPENROUTER_API_KEY"],
                 **kwargs
             )
